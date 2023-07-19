@@ -57,9 +57,11 @@ import {
     getTicket
 } from '../controllers/ticketController.js'
 
-router.get()
+// GET to /api/tickets/my-tickets
+router.get('/my-tickets', getTickets)
 
-router.post()
+// POST to /api/tickets/.
+router.post('/', createTicket)
 
 export default router
 ```
