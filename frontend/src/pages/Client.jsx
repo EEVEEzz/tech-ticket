@@ -51,7 +51,7 @@ const Client = () => {
       </Link>
 
       <div>
-        <table className="table">
+        <table className="table table-xs lg:table-lg xl:table-lg md:table-md">
           <thead>
             <tr>
               <th></th>

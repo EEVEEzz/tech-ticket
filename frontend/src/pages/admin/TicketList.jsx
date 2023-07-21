@@ -17,7 +17,7 @@ const TicketList = () => {
   ) : (
     <>
       <h1 className="card-title mb-10">Tickets</h1>
-      <table className="table">
+      <table className="table table-xs lg:table-lg xl:table-lg md:table-md">
         <thead>
           <tr>
             <th></th>
