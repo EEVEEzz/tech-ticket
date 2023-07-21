@@ -44,9 +44,11 @@ const NewClient = () => {
         <Message error={error?.data.error || error?.message} />
       ) : (
         <FormContainer>
-          <form onSubmit={submitHandler}>
+          <h1 className="card-title mb-10">Add a new Client</h1>
+          <form className="" onSubmit={submitHandler}>
             <div>
               <input
+                className="input input-secondary mb-5"
                 id="clientName"
                 value={clientName}
                 onChange={(e) => setClientName(e.target.value)}
@@ -56,6 +58,7 @@ const NewClient = () => {
             </div>
             <div>
               <input
+                className="input input-secondary mb-5"
                 id="clientEmail"
                 value={clientEmail}
                 onChange={(e) => setClientEmail(e.target.value)}
@@ -65,6 +68,7 @@ const NewClient = () => {
             </div>
             <div>
               <input
+                className="input input-secondary mb-5"
                 id="clientNumber"
                 value={clientNumber}
                 onChange={(e) => setClientNumber(e.target.value)}

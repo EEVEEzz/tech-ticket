@@ -43,30 +43,64 @@ const Header = () => {
               />
             </svg>
           </label>
-          <ul
+          <div
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <Link className="btn" to={`/clients`}>
-                Clients
-              </Link>
-            </li>
-            <li>
-              <Link className="btn" to={`/tickets`}>
-                Tickets
-              </Link>
-            </li>
-            <li>
-              <button className="btn" onClick={logoutHandler}>
-                Logout
-              </button>
-            </li>
-          </ul>
+            {userInfo?.isAdmin && (
+              <h3 className="mt-3">
+                Admin Panel
+              </h3>
+            )}
+
+            {userInfo?.isAdmin && (
+              <>
+                <Link
+                  className="btn btn-secondary btn-outline btn-sm mb-2"
+                  to="/admin/users-list"
+                >
+                  Users List
+                </Link>
+                <Link
+                  className="btn btn-secondary btn-outline btn-sm mb-2"
+                  to="/admin/tickets-list"
+                >
+                  Tickets List
+                </Link>
+                <Link
+                  className="btn btn-secondary btn-outline btn-sm mb-2"
+                  to="/admin/financials"
+                >
+                  Financials
+                </Link>
+                <Link
+                  className="btn btn-secondary btn-outline btn-sm mb-2"
+                  to="/admin/work-flow"
+                >
+                  Work Flow
+                </Link>
+              </>
+            )}
+            <Link className="btn mb-2" to={`/clients`}>
+              Clients
+            </Link>
+            <Link className="btn mb-2" to={`/tickets`}>
+              Tickets
+            </Link>
+
+            <Link to={`/profile`} className="btn mb-2">
+              Profile
+            </Link>
+            <button className="btn" onClick={logoutHandler}>
+              Logout
+            </button>
+          </div>
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost normal-case text-xl">Tickit</a>
+        <Link to={"/"} className="btn btn-ghost normal-case text-xl">
+          Tickit
+        </Link>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">

@@ -17,9 +17,34 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     getTicketById: builder.query({
-      query: ( ticketId ) => ({
+      query: (ticketId) => ({
         url: `${TICKETS_URL}/${ticketId}`,
         method: "GET",
+      }),
+    }),
+    createNote: builder.mutation({
+      query: (data) => ({
+        url: `${TICKETS_URL}/${data.ticketId}/notes`,
+        method: "POST",
+        body: { ...data },
+      }),
+    }),
+    updateToPaid: builder.mutation({
+      query: (ticketId) => ({
+        url: `${TICKETS_URL}/${ticketId}/pay`,
+        method: "PUT",
+      }),
+    }),
+    updateToCompleted: builder.mutation({
+      query: (ticketId) => ({
+        url: `${TICKETS_URL}/${ticketId}/complete`,
+        method: "PUT",
+      }),
+    }),
+    updateToCollected: builder.mutation({
+      query: (ticketId) => ({
+        url: `${TICKETS_URL}/${ticketId}/collect`,
+        method: "PUT",
       }),
     }),
   }),
@@ -29,4 +54,8 @@ export const {
   useCreateTicketMutation,
   useGetTicketsQuery,
   useGetTicketByIdQuery,
+  useCreateNoteMutation,
+  useUpdateToPaidMutation,
+  useUpdateToCollectedMutation,
+  useUpdateToCompletedMutation,
 } = usersApiSlice;

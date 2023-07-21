@@ -30,7 +30,7 @@ app.use(notFound);
 app.use(errorHandler);
 
 app.get("/", function (req, res) {
-  res.status(200).json({ message: "API RUNNING" });
+  res.status(200).json({ message: "API IS RUNNING" });
 });
 
 app.listen(PORT, function () {

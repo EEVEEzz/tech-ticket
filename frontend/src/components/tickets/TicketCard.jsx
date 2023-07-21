@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Message from "../Message";
+import { FaTimes, FaCheck } from "react-icons/fa";
 
-const TicketCard = ({ ticket }) => {
+const TicketCard = ({ ticket, i }) => {
   console.log(ticket);
 
   function shortenString(str, maxLength) {
@@ -13,88 +15,88 @@ const TicketCard = ({ ticket }) => {
   }
 
   return (
-    <>
-      <div className="card bg-base-200 mb-3 mt-3">
-        <div className="card-body">
-          <div className="flex justify-between">
-            <div>
-              <div className="stat-title">Client Name:</div>
-              <h3>{ticket.clientName}</h3>
-            </div>
-
-            <div>
-              <div className="stat-title">Client Contact:</div>
-              <h3>{ticket.clientNumber}</h3>
-            </div>
-          </div>
-
-          <div className="mt-2">
-            <div className="stat-title">Ticket Info</div>
-            <div className="grid grid-cols-2 gap-3">
-              <div className="badge">{ticket.itemName}</div>
-              <div className="badge">{shortenString(ticket.fault, 24)}</div>
-              <div className="badge">
-                {new Date(ticket.createdAt).toDateString()}
+    <tr className="">
+      <th>{i + 1}</th>
+      <td>{ticket.itemName}</td>
+      <td>{shortenString(ticket.fault, 24)}</td>
+      <td>{new Date(ticket.createdAt).toDateString()}</td>
+      <td>{ticket.clientName}</td>
+      <td>{ticket.clientNumber}</td>
+      <td>
+        {ticket.isOpen && ticket.inProgress ? (
+          <>
+            <div className="text-accent">in progress</div>
+          </>
+        ) : !ticket.inProgress && ticket.isOpen ? (
+          <>
+            <div className="text-success">new/open</div>
+          </>
+        ) : ticket.isClosed ? (
+          <>
+            <div className="text-warning">closed</div>
+          </>
+        ) : (
+          <>
+            <div></div>
+          </>
+        )}
+      </td>
+      <td>
+        {ticket.paymentMethod !== "No Payment" ? (
+          <>
+            {ticket.isPaid ? (
+              <div className="text-success">
+                {" "}
+                Paid on {new Date(ticket.paidAt).toLocaleDateString()}
               </div>
-              {ticket.isOpen ? (
-                <>
-                  <div className="badge badge-success badge-outline">
-                    new/open
-                  </div>
-                </>
-              ) : ticket.inProgress ? (
-                <>
-                  <div className="badge badge-secondary badge-outline">
-                    in progress
-                  </div>
-                </>
-              ) : ticket.isClosed ? (
-                <>
-                  <div className="badge badge-accent badge-outline">closed</div>
-                </>
-              ) : (
-                <>
-                  <div className="badge badge badge-outline"></div>
-                </>
-              )}
-              <>
-                {ticket.paymentMethod !== "No Payment" ? (
-                  <>
-                    {ticket.isPaid ? (
-                      <div className="badge badge-success badge-outline"></div>
-                    ) : (
-                      <div className="badge badge-error badge-outline">
-                        Unpaid
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <div className="badge badge-secondary badge-outline">
-                    No Payment
-                  </div>
-                )}
-              </>
-              {/* <div className="badge badge-success badge-outline"></div>
-              <div className="badge badge-accent badge-outline"></div> */}
-            </div>
+            ) : (
+              <div className="text-error">
+                <FaTimes />
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="text-error">No Payment</div>
+        )}
+      </td>
+      <td>
+        {ticket.paymentMethod !== "No Payment" ? (
+          <div className="font-bold">R{ticket.totalPrice}</div>
+        ) : (
+          <div className="text-error">N/A</div>
+        )}
+      </td>
+      <td>
+        {ticket.isCompleted ? (
+          <div className="text-success">
+            <FaCheck />
           </div>
-          <div className="grid grid-cols-2 mt-5">
-            <Link
-              to={`/tickets/${ticket._id}`}
-              className="btn btn-sm btn-secondary w-fit"
-            >
-              View Ticket
-            </Link>
-            <Link
-              to={`/clients/${ticket.clientId}`}
-              className="btn btn-sm btn-accent w-fit"
-            >
-              View Client
-            </Link>
+        ) : (
+          <div className="text-error">
+            <FaTimes />
           </div>
-        </div>
-      </div>
-    </>
+        )}
+      </td>
+      <td>
+        {ticket.isCollected ? (
+          <div className="text-success">
+            <FaCheck />
+          </div>
+        ) : (
+          <div className="text-error">
+            <FaTimes />
+          </div>
+        )}
+      </td>
+      <td>
+        <Link
+          to={`/tickets/${ticket._id}`}
+          className="btn btn-xs btn-secondary"
+        >
+          View
+        </Link>
+      </td>
+    </tr>
   );
 };
 

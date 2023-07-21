@@ -12,7 +12,7 @@ const noteSchema = new mongoose.Schema(
       required: true,
     },
     comment: {
-      type: Number,
+      type: String,
       required: true,
     },
     image: {
@@ -73,6 +73,16 @@ const ticketSchema = new mongoose.Schema(
       required: false,
       type: Date,
     },
+    isCollected: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
+    isCompleted: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
     isPaid: {
       type: Boolean,
       required: false,
@@ -91,7 +101,7 @@ const ticketSchema = new mongoose.Schema(
       status: { type: String },
       update_time: { type: String },
       email_address: { type: String },
-      number: { type: Number },
+      name: { type: String },
     },
     totalPrice: {
       type: Number,

@@ -44,7 +44,7 @@ const NewTicket = () => {
           model,
           fault,
         }).unwrap();
-        console.log(res)
+        console.log(res);
         navigate(`/tickets/${res._id}`);
         refetch();
         toast.success("Ticket Created");
@@ -60,6 +60,8 @@ const NewTicket = () => {
     <Message error={error?.message || error?.data.message} />
   ) : (
     <FormContainer>
+      <h1 className="card-title mb-10">Create a new Ticket</h1>
+
       <form onSubmit={submitHandler} className="form-control">
         <div className="flex gap-10">
           <div>

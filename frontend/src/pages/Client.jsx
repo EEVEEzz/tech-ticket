@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGetClientQuery } from "../slices/clientApiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -10,12 +10,16 @@ import { useGetTicketsQuery } from "../slices/ticketSlice";
 
 const Client = () => {
   const { id: clientId } = useParams();
-  const { data, isLoading, error } = useGetClientQuery(clientId);
+  const { data, isLoading, error, refetch } = useGetClientQuery(clientId);
   const {
     data: tickets,
     isLoading: ticketsLoading,
     error: ticketsError,
   } = useGetTicketsQuery();
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   console.log(tickets);
 
@@ -47,18 +51,35 @@ const Client = () => {
       </Link>
 
       <div>
-        {data?.tickets?.length > 0 && (
-          <>
-            <h3>Tickets</h3>
-            <div className="grid grid-cols-2 gap-3">
-              {tickets
-                .filter((ticket) => ticket.clientId === data._id)
-                .map((item) => (
-                  <TicketCard ticket={item} />
-                ))}
-            </div>
-          </>
-        )}
+        <table className="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>ItemName</th>
+              <th>Fault</th>
+              <th>Created</th>
+              <th>Client</th>
+              <th>Contact</th>
+              <th>Status</th>
+              <th>Paid</th>
+              <th>Price</th>
+              <th>Completed</th>
+              <th>Collected</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {data?.tickets?.length > 0 && (
+              <>
+                {tickets
+                  .filter((ticket) => ticket.clientId === data._id)
+                  .map((item, i) => (
+                    <TicketCard i={i} key={item._id} ticket={item} />
+                  ))}
+              </>
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );
