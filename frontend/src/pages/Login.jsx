@@ -101,21 +101,7 @@ const Login = () => {
                     Login
                   </button>
 
-                  <div className="flex gap-5 items-center">
-                    <p className="font-bold text-info">
-                      Don't have an account?
-                    </p>
-                    <Link
-                      to={
-                        redirect
-                          ? `/register?redirect=${redirect}`
-                          : "/register"
-                      }
-                      className="btn btn-sm btn-outline btn-secondary"
-                    >
-                      Register
-                    </Link>
-                  </div>
+                    <p className="text-warning font-bold text-xs text-center">Can't Login? Speak to your Administrator</p>
                 </div>
               </>
             )}

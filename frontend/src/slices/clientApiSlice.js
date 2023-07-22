@@ -22,6 +22,29 @@ export const clientApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    deleteClient: builder.mutation({
+      query: (clientId) => ({
+        url: `${CLIENTS_URL}/${clientId}`,
+        method: "DELETE",
+      }),
+      keepUnusedDataFor: 5,
+      providesTags: ["Client"],
+    }),
+    getClientDetails: builder.query({
+      query: (clientId) => ({
+        url: `${CLIENTS_URL}/${clientId}`,
+        method: "GET",
+      }),
+      keepUnusedDataFor: 5,
+    }),
+    updateClient: builder.mutation({
+      query: (data) => ({
+        url: `${CLIENTS_URL}/${data.clientId}`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["Client"],
+    }),
   }),
 });
 
@@ -29,4 +52,7 @@ export const {
   useCreateClientMutation,
   useGetClientsQuery,
   useGetClientQuery,
+  useDeleteClientMutation,
+  useGetClientDetailsQuery,
+  useUpdateClientMutation
 } = clientApiSlice;

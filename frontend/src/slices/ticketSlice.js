@@ -47,6 +47,13 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         method: "PUT",
       }),
     }),
+    addReplacementToTicket: builder.mutation({
+      query: (data) => ({
+        url: `${TICKETS_URL}/${data.ticketId}/replacement`,
+        method: "POST",
+        body: { ...data },
+      }),
+    }),
   }),
 });
 
@@ -58,4 +65,5 @@ export const {
   useUpdateToPaidMutation,
   useUpdateToCollectedMutation,
   useUpdateToCompletedMutation,
+  useAddReplacementToTicketMutation,
 } = usersApiSlice;

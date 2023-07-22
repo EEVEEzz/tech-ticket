@@ -16,11 +16,11 @@ const Tickets = () => {
   return isLoading ? (
     <Spinner />
   ) : error ? (
-    <Message error={error?.data.message || error?.message} />
+    <Message error={error?.data?.message || error?.message} />
   ) : (
     <>
       <h1 className="card-title mb-10">Tickets</h1>
-      <table className="table table-xs lg:table-lg xl:table-lg md:table-md">
+      <table className="table bg-base-200 table-xs lg:table-xs  md:table-xs">
         <thead>
           <tr>
             <th></th>

@@ -1,7 +1,7 @@
 import React from "react";
 import Message from "../../components/Message";
 import Spinner from "../../components/Spinner";
-import { FaTimes, FaTrash } from "react-icons/fa";
+import { FaTimes, FaTrash, FaCheck } from "react-icons/fa";
 import { useGetTicketsQuery } from "../../slices/ticketSlice";
 import { Link } from "react-router-dom";
 
@@ -10,14 +10,23 @@ const TicketList = () => {
 
   console.log(tickets);
 
+  
+  function shortenString(str, maxLength) {
+    if (str.length <= maxLength) {
+      return str;
+    } else {
+      return str.substr(0, maxLength) + "...";
+    }
+  }
+
   return isLoading ? (
     <Spinner />
   ) : error ? (
-    <Message error={error?.data.message || error?.message} />
+    <Message error={error?.tickets.message || error?.message} />
   ) : (
     <>
       <h1 className="card-title mb-10">Tickets</h1>
-      <table className="table table-xs lg:table-lg xl:table-lg md:table-md">
+      <table className="table bg-base-200 table-xs lg:table-xs  md:table-xs">
         <thead>
           <tr>
             <th></th>
@@ -36,7 +45,7 @@ const TicketList = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, i) => (
+          {tickets.map((item, i) => (
             <tr className="">
               <th>{i + 1}</th>
               <td>{item.itemName}</td>
@@ -117,9 +126,6 @@ const TicketList = () => {
                 >
                   View
                 </Link>
-              </td>
-              <td>
-                <FaTrash /> 
               </td>
             </tr>
           ))}

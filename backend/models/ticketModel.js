@@ -23,6 +23,25 @@ const noteSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+const replacementSchema = new mongoose.Schema(
+  {
+    replacementName: { type: String, required: true },
+    replacementModel: { type: String, required: true },
+    replacementSerial: { type: String, required: true },
+    replacementPrice: { type: Number, required: true },
+    isPaid: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    paidAt: {
+      required: false,
+      type: Date,
+    }
+  },
+  { timestamps: true }
+);
+
 const ticketSchema = new mongoose.Schema(
   {
     clientId: {
@@ -45,6 +64,7 @@ const ticketSchema = new mongoose.Schema(
       required: false,
       ref: "User",
     },
+    replacements: [replacementSchema],
     notes: [noteSchema],
     itemName: { type: String, required: false },
     model: { type: String, required: false },

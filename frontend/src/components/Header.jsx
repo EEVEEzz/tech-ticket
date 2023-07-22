@@ -3,7 +3,6 @@ import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import NewTicket from "../pages/NewTicket";
 import Theme from "./Theme";
 
 const Header = () => {
@@ -56,42 +55,42 @@ const Header = () => {
             {userInfo?.isAdmin && (
               <>
                 <Link
-                  className="btn btn-secondary btn-outline btn-sm mb-2"
+                  className="btn btn-primary btn-outline btn-sm mb-2"
                   to="/admin/users-list"
                 >
                   Users List
                 </Link>
                 <Link
-                  className="btn btn-secondary btn-outline btn-sm mb-2"
-                  to="/admin/tickets-list"
+                  className="btn btn-primary btn-outline btn-sm mb-2"
+                  to="/admin/client-list"
                 >
-                  Tickets List
+                  Client List
                 </Link>
                 <Link
-                  className="btn btn-secondary btn-outline btn-sm mb-2"
+                  className="btn btn-primary btn-outline btn-sm mb-2"
+                  to="/admin/ticket-list"
+                >
+                  Ticket List
+                </Link>
+                <Link
+                  className="btn btn-primary btn-outline btn-sm mb-2"
                   to="/admin/financials"
                 >
                   Financials
                 </Link>
-                <Link
-                  className="btn btn-secondary btn-outline btn-sm mb-2"
-                  to="/admin/work-flow"
-                >
-                  Work Flow
-                </Link>
               </>
             )}
-            <Link className="btn mb-2" to={`/clients`}>
+            <Link className="btn btn-secondary mb-2" to={`/clients`}>
               Clients
             </Link>
-            <Link className="btn mb-2" to={`/tickets`}>
+            <Link className="btn btn-secondary mb-2" to={`/tickets`}>
               Tickets
             </Link>
 
-            <Link to={`/profile`} className="btn mb-2">
+            <Link to={`/profile`} className="btn btn-secondary mb-2">
               Profile
             </Link>
-            <button className="btn" onClick={logoutHandler}>
+            <button className="btn btn-secondary" onClick={logoutHandler}>
               Logout
             </button>
           </div>

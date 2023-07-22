@@ -4,8 +4,8 @@ import {
   createClient,
   getClients,
   getClient,
-//   updateClient,
-//   deleteClient,
+  deleteClient,
+  updateClient,
 } from "../controllers/clientController.js";
 import { protect, admin } from "../middleware/authMiddleware.js";
 
@@ -18,8 +18,8 @@ router.post("/", protect, createClient);
 // GET to /api/clients/:id
 router.get("/:id", protect, getClient);
 
-// admin only   routes
-// router.put('/:id', protect, admin, updateClient)
-// router.put('/:id', protect, admin, deleteClient)
+// admin routes
+router.route("/:id").delete(protect, admin, deleteClient);
+router.route("/:id").put(protect, admin, updateClient);
 
 export default router;

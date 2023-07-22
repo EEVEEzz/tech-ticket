@@ -101,8 +101,6 @@ const createNote = asyncHandler(async (req, res) => {
 const updateToPaid = asyncHandler(async (req, res) => {
   const ticket = await Ticket.findById(req.params.id);
 
-  console.log("TICKET", ticket)
-
   if (ticket) {
     ticket.isPaid = true;
     ticket.paidAt = Date.now();
@@ -148,8 +146,6 @@ const updateToCompleted = asyncHandler(async (req, res) => {
   const ticket = await Ticket.findById(req.params.id);
   const client = await Client.findById(ticket.clientId);
 
-  console.log("CLIENT DETAILS: ", client)
-
   if (ticket) {
     ticket.isOpen = false;
     ticket.inProgress = false;
@@ -157,8 +153,12 @@ const updateToCompleted = asyncHandler(async (req, res) => {
     ticket.isCompleted = true;
     ticket.completedAt = Date.now();
     ticket.completedBy = req.user.name;
-    client.ticketsIsOpen = client.ticketsIsOpen ? (client.ticketsIsOpen -= 1) : 1;
-    client.ticketsIsClosed = client.ticketsIsOpen ? (client.ticketsIsOpen += 1) : 1;
+    client.ticketsIsOpen = client.ticketsIsOpen
+      ? (client.ticketsIsOpen -= 1)
+      : 1;
+    client.ticketsIsClosed = client.ticketsIsOpen
+      ? (client.ticketsIsOpen += 1)
+      : 1;
 
     const updatedOrder = await ticket.save();
     await client.save();
@@ -170,6 +170,43 @@ const updateToCompleted = asyncHandler(async (req, res) => {
   }
 });
 
+// add replacement item to ticket
+// PUT /api/tickets/:id/replacment
+// Private
+const addReplacementToTicket = asyncHandler(async (req, res) => {
+  const ticket = await Ticket.findById(req.params.id);
+  const client = await Client.findById(ticket.clientId);
+
+  console.log(req.body)
+
+  // get ticket from body
+  const {
+    ticketId,
+    replacementName,
+    replacementModel,
+    replacementSerial,
+    replacementPrice,
+    paymentMethod,
+  } = req.body;
+
+  const replacement = {
+    ticketId : ticketId,
+    replacementName: replacementName,
+    replacementModel: replacementModel,
+    replacementSerial: replacementSerial,
+    replacementPrice: replacementPrice,
+    paymentMethod: paymentMethod,
+    totalPrice: Number(ticket.totalPrice) + Number(replacementPrice),
+  };
+
+  // set ticket info
+  ticket.totalPrice = Number(ticket.totalPrice) + Number(replacementPrice);
+  ticket.replacements.push(replacement);
+
+  const ticketUpdated = await ticket.save();
+  res.status(201).json(ticketUpdated);
+});
+
 export {
   createTicket,
   getTickets,
@@ -178,4 +215,5 @@ export {
   updateToPaid,
   updateToCollected,
   updateToCompleted,
+  addReplacementToTicket,
 };

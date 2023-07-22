@@ -49,7 +49,7 @@ const registerUser = asyncHandler(async (req, res) => {
     generateToken(res, user._id);
 
     res.status(201).json({
-      _isd: user._id,
+      _id: user._id,
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,

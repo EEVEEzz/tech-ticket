@@ -25,17 +25,17 @@ const Home = () => {
           <div className="card-body bg-base-200 card">
             <h3>Admin Panel</h3>
             <div className="flex gap-5">
-              <Link className="btn mb-2" to="/clients">
+              <Link className="btn btn-primary mb-2" to="/admin/financials">
                 Financials
               </Link>
-              <Link className="btn mb-2" to="/tickets">
-                Work Flow
-              </Link>
-              <Link className="btn mb-2" to="/clients">
+              <Link className="btn btn-primary mb-2" to="/admin/users-list">
                 Users List
               </Link>
-              <Link className="btn mb-2" to="/tickets">
+              <Link className="btn btn-primary mb-2" to="/admin/ticket-list">
                 Tickets List
+              </Link>
+              <Link className="btn btn-primary mb-2" to="/admin/client-list">
+                Clients List
               </Link>
             </div>
           </div>
@@ -43,11 +43,11 @@ const Home = () => {
         <div className="card-body bg-base-200 card">
           <h3>Tech Panel</h3>
           <div className="flex gap-5">
-            <Link className="btn mb-2" to="/clients">
-              Clients
+            <Link className="btn btn-secondary mb-2" to="/clients">
+              View Clients
             </Link>
-            <Link className="btn mb-2" to="/tickets">
-              Tickets
+            <Link className="btn btn-secondary mb-2" to="/tickets">
+              View Tickets
             </Link>
           </div>
         </div>

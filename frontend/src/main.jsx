@@ -18,13 +18,10 @@ import AdminRoute from "./components/AdminRoute";
 
 import Home from "./pages/Home.jsx";
 import Tickets from "./pages/Tickets.jsx";
-import Register from "./pages/Register.jsx";
 import Clients from "./pages/Clients";
 import Client from "./pages/Client";
-import NewClient from "./pages/NewClient";
 import Login from "./pages/Login.jsx";
 import "./index.css";
-import NewTicket from "./pages/NewTicket";
 import Ticket from "./pages/Ticket";
 import Profile from "./pages/Profile";
 import TicketList from "./pages/admin/TicketList";
@@ -33,22 +30,20 @@ import ClientList from "./pages/admin/ClientList";
 import ClientEdit from "./pages/admin/ClientEdit";
 import UserEdit from "./pages/admin/UserEdit";
 import UserList from "./pages/admin/UserList";
+import Financials from "./pages/admin/Financials";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
 
       <Route path="" element={<PrivateRoute />}>
         <Route index={true} path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/clients" element={<Clients />} />
         <Route path="/clients/:id" element={<Client />} />
-        <Route path="/new-client" element={<NewClient />} />
         <Route path="/tickets" element={<Tickets />} />
         <Route path="/tickets/:id" element={<Ticket />} />
-        <Route path="/clients/:id/new-ticket" element={<NewTicket />} />
       </Route>
 
       {/* Admin Routes */}
@@ -58,9 +53,9 @@ const router = createBrowserRouter(
         <Route path="/admin/ticket-list/:pageNumber" element={<TicketList />} />
         <Route path="/admin/client-list" element={<ClientList />} />
         <Route path="/admin/client/:id/edit" element={<ClientEdit />} />
-
         <Route path="/admin/users-list" element={<UserList />} />
         <Route path="/admin/user/:id/edit" element={<UserEdit />} />
+        <Route path="/admin/financials" element={<Financials />} />
       </Route>
     </Route>
   )

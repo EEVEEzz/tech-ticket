@@ -19,9 +19,9 @@ function App() {
 
   return (
     <div>
-      <div id="submain" data-theme={theme} className=" border">
+      <div id="submain" data-theme={theme} className=" ">
         <div className="header"><Header /></div>
-          <div className="container mx-auto  pt-5 pb-10">
+          <div className="container mx-auto h-full min-h-screen  pt-5 pb-10">
             <Outlet />
           </div>
           <div className="footer"><Footer /></div>

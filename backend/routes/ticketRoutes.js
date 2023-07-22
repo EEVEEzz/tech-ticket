@@ -8,6 +8,7 @@ import {
   updateToCollected,
   updateToPaid,
   updateToCompleted,
+  addReplacementToTicket
 //   archiveTicket,
 } from "../controllers/ticketController.js";
 import { protect, admin } from "../middleware/authMiddleware.js";
@@ -32,6 +33,9 @@ router.put("/:id/pay", protect, admin, updateToPaid);
 
 // PUT to /api/tickets/:id/complete
 router.put("/:id/complete", protect, updateToCompleted);
+
+// POST to /api/tickets/:id/replacement
+router.post("/:id/replacement", protect, addReplacementToTicket);
 
 // PUT to /api/tickets/:id/complete
 // router.put("/:id/archive", protect, updateToCompleted);

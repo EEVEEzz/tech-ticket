@@ -13,7 +13,7 @@ import {
 } from "../controllers/userController.js";
 import { protect, admin } from "../middleware/authMiddleware.js";
 
-router.post("/", registerUser);
+router.post("/register",  registerUser);
 
 router.post("/login", loginUser);
 router.post("/logout", logoutUser);
@@ -22,9 +22,9 @@ router.route("/profile").get(protect, getUserProfile);
 router.route("/profile").put(protect, updateUserProfile);
 
 // admin routes
-router.route("/").get(protect, admin, getUsers);
-router.route("/:id").get(protect, admin, getUser);
-router.route("/:id").delete(protect, admin, deleteUser);
-router.route("/:id").put(protect, admin, updateUser);
+router.route("/").get(getUsers);
+router.route("/:id").get(getUser);
+router.route("/:id").delete(deleteUser);
+router.route("/:id").put(updateUser);
 
 export default router;
