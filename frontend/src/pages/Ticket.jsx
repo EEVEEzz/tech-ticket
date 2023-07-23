@@ -139,12 +139,12 @@ const Ticket = () => {
         <Message error={error?.message || error?.data.message} />
       ) : (
         <>
-        <Meta title={`Ticket: ${data._id}`} />
+          <Meta title={`Ticket: ${data._id}`} />
 
           <div className="">
             <div className="mb-3 mt-3">
               <div className="ml-5 mr-5">
-                <div className="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-5 gap-5 mb-3">
+                <div className="grid grid-cols-1 lg:grid-cols-5 md:grid-cols-5 gap-5 mb-3">
                   {data.isOpen && data.inProgress ? (
                     <>
                       <div className="badge badge-accent badge-outline">
@@ -199,15 +199,14 @@ const Ticket = () => {
                   )}
                 </div>
 
-                <div className="flex justify-between bg-base-200 p-3 rounded-lg">
-                  <div>
-                    <div className="stat-title">Client Name:</div>
-                    <h3>{data.clientName}</h3>
-                  </div>
-
+                <div className="grid grid-cols-1 gap-2 justify-between bg-base-200 p-3 rounded-lg">
                   <div>
                     <div className="stat-title">Ticket ID:</div>
                     <h3>{data._id}</h3>
+                  </div>
+                  <div>
+                    <div className="stat-title">Client Name:</div>
+                    <h3>{data.clientName}</h3>
                   </div>
 
                   <div>
@@ -228,7 +227,7 @@ const Ticket = () => {
                       <div>
                         <div className="stat-title">Created</div>
                         <div className="stat-value text-2xl">
-                          {new Date(data.createdAt).toDateString()}
+                          {new Date(data.createdAt).toLocaleDateString()}
                         </div>
                       </div>
                       <div>
@@ -255,7 +254,7 @@ const Ticket = () => {
                           </thead>
                           <tbody>
                             {data.replacements.map((item) => (
-                              <tr  key={item._id}>
+                              <tr key={item._id}>
                                 <td>{item.replacementName}</td>
                                 <td>{item.replacementModel}</td>
                                 <td>{item.replacementSerial}</td>
@@ -268,7 +267,7 @@ const Ticket = () => {
                     )}
                   </div>
 
-                  <div className="flex justify-between mt-5">
+                  <div className="flex flex-col-reverse lg:flex-row justify-between mt-5">
                     <div className="flex flex-col w-fit gap-1">
                       {userInfo.isAdmin &&
                         data.paymentMethod !== "No Payment" && (
@@ -302,7 +301,7 @@ const Ticket = () => {
                     <FormContainer>
                       {/* Open the modal using ID.showModal() method */}
                       <button
-                        className="btn btn-primary btn-sm mb-5 mt-5"
+                        className="btn btn-primary btn-sm mb-5 mt-5 w-fit"
                         onClick={() => window.my_modal_2.showModal()}
                       >
                         Add a replacement Item
@@ -460,7 +459,7 @@ const Ticket = () => {
                   <div className="mt-5">
                     {data.notes.length > 0 &&
                       data.notes.map((item) => (
-                        <div  key={item._id}>
+                        <div key={item._id}>
                           {userInfo.isAdmin && item.user === userInfo._id ? (
                             <>
                               <div className="textarea bg-base-200 mb-2">
