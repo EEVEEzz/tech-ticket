@@ -1,6 +1,13 @@
 # Tech Ticket Support - Fullstack MERN App
 Demo -> https://tickit-support.onrender.com/login
 
+you can login with: 
+| Email     | Password      | Role    |
+| --------- | ------------- | ------- |
+| admin@admin    | 12345   | Admin  | 
+| tech2@tech   | 123  | User  | 
+| ben@email.com  | 12345 | User  | 
+
 
 Fullstack MongoDB, Express, React & Node Technical Ticket Support Desk App
 with Full CRUD (Create, Read, Update, Delete) Functionality
