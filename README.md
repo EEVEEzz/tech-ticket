@@ -146,8 +146,11 @@ From the root, in a terminal, initiate one of the following.
 
 1. Run Production Build
 
-   - `npm run build` will start the Vite Production build.
-   - afterwards run `npm start`
+  - `npm run build` will start the Vite Production build.
+  - runs the script `npm install && npm install --prefix frontend  && npm run build --prefix frontend`
+
+  - This installs both frontend and backend dependencies and starts the `npx vite build` script to start the Vite Production build.
+  - afterwards, run `npm start`
 
    > be sure that your `.env` is using `NODE_ENV='production'`
 
