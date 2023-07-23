@@ -1,18 +1,18 @@
 # Tech Ticket Support - Fullstack MERN App
+
 Demo -> https://tickit-support.onrender.com/login
 
-you can login with: 
-| Email     | Password      | Role    |
+you can login with:
+| Email | Password | Role |
 | --------- | ------------- | ------- |
-| admin@admin    | 12345   | Admin  | 
-| tech2@tech   | 123  | User  | 
-| ben@email.com  | 12345 | User  | 
-
+| admin@admin | 12345 | Admin |
+| tech2@tech | 123 | User |
+| ben@email.com | 12345 | User |
 
 Fullstack MongoDB, Express, React & Node Technical Ticket Support Desk App
 with Full CRUD (Create, Read, Update, Delete) Functionality
 
->***psst, i'm not a developer but I'm learning fullstack. This is my first Fullstack WebApp after numerous small projects. I'm completely self taught and only know I can continue improving***
+> **_psst, i'm not a developer but I'm learning fullstack. This is my first Fullstack WebApp after numerous small projects. I'm completely self taught and only know I can continue improving_**
 
 > This Project and the layout of the tickets are designed around someone that works with PC's as this is something I have personal experience with. However, the current fields may also apply to various other types of technical work but if not, can always be updated to do so.
 
@@ -110,37 +110,38 @@ with Full CRUD (Create, Read, Update, Delete) Functionality
 
 - Create a new file named `.env` in the root of the project.
 
-  > the data in the .env file is SENSITIVE and should
-  > generally stay hidden from unwanted eyes.
+  > **the data in the .env file is SENSITIVE and should
+  > generally stay hidden from unwanted eyes.**
 
 add the following lines:
 
 ```env
 // .env
 
-MONGO_URI='your mongo database uri' 
+MONGO_URI='your mongo database uri'
 NODE_ENV='production'    // or 'development' if not using the production build
 PORT=5000
 JWT_SECRET='anything'
 ```
+
 > note: the MONGO_URI string will start as such
-> `mongodb+srv://...` 
-> ***and don't forget to add your password in the URI where it asks for it***
+> `mongodb+srv://...`
+> **_and don't forget to add your password in the URI where it asks for it_**
 
 # Install Project Dependencies
 
 1. Install backend dependencies
 
-_From the root directory_
+    _From the root directory_
 
-- open a terminal and type:
+    - open a terminal and type:
   `npm i`
 
-3. Install frontend dependencies
+2. Install frontend dependencies
 
-_Navigate to the `frontend` folder_
+    _Navigate to the `frontend` folder_
 
-- open a terminal and type:
+    - open a terminal and type:
   `npm i`
 
 # Scripts
@@ -155,24 +156,26 @@ From the root, in a terminal, initiate one of the following.
    > in this case, it starts both the client (frontend) & server (backend).
    > be sure that your `.env` is using `NODE_ENV='development'`
 
-1. Run Production Build
+2. Run Production Build
 
-  - `npm run build` will start the Vite Production build.
-  - runs the script `npm install && npm install --prefix frontend  && npm run build --prefix frontend`
+- `npm run build` will start the Vite Production build.
+- runs the script `npm install && npm install --prefix frontend  && npm run build --prefix frontend`
 
-  - This installs both frontend and backend dependencies and starts the `npx vite build` script to start the Vite Production build.
-  - afterwards, run `npm start`
+- This installs both frontend and backend dependencies and starts the `npx vite build` script to start the Vite Production build.
+- afterwards, run `npm start`
 
-   > be sure that your `.env` is using `NODE_ENV='production'`
+> **be sure that your `.env` is using `NODE_ENV='production'`**
 
-1. manually import/destroy seed to database
+3. manually import/destroy seed to database
+   **_this is generally only for development_**
 
    - `npm run data:import` - will import the hardcoded data from `./backend/data.js` to MongoDB.
    - `npm run data:destroy` - ⚠️ Dangerous. Will completely erase all data in MongoDB.
 
-
 # Startup
+
 - Assuming you have installed and setup:
+
   - Node v18 or higher installed.
   - Git Bash installed.
   - MongoDB collection and user document created.
@@ -180,18 +183,22 @@ From the root, in a terminal, initiate one of the following.
   - Correct configuration settings for `.env` file
 
 - open a git bash terminal in the root of the project.
+
   - run `npm i` to install the project dependencies.
 
 - open a git bash terminal in the `/frontend` folder.
+
   - run `npm i` to install the project dependencies.
 
 - once both backend and frontend dependencies are installed.
+
   - from the root of the project, run `npm run build`
   - afterwards, run `npm start` to start the production backend.
 
 - your project should be live at http://localhost:5000 or http://127.0.0.1:5000
-> if you see "API IS RUNNING" instead, make sure your .env file is correct
-> make sure that `NODE_ENV=production` and your `MONGO_URI` is correct.
+  > if you see "API IS RUNNING" instead, make sure your .env file is correct
+  > make sure that `NODE_ENV=production` and your `MONGO_URI` is correct.
+
 # Model Schemas
 
 ## User Model
