@@ -79,7 +79,7 @@ const UserList = () => {
   return (
     <div>
       <div>
-        <h1>Users List:</h1>
+      <h1 className="card-title mb-10">Users</h1>
       </div>
 
       <Meta title={`Admin: Users List`} />

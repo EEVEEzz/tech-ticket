@@ -65,6 +65,7 @@ const Financials = () => {
     <>Error</>
   ) : (
     <>
+    <h1 className="card-title mb-10">Financial Info</h1>
       {/* Current Day Tickets Table */}
       <h3 className="stat-title">
         Today's Tickets ({new Date().toLocaleDateString()})

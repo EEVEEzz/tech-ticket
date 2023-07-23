@@ -56,7 +56,7 @@ const Profile = () => {
     <>
       <div className="flex">
         <Meta title={`Profile`} />
-        <h1 className="font-bold text-xl mx-auto mb-5">My Profile</h1>
+        <h1 className="card-title mb-10">Profile</h1>
       </div>
       <div>
         <div className="grid grid-cols-1">

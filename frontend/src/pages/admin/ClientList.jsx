@@ -64,10 +64,11 @@ const ClientList = () => {
 
   return (
     <div>
+      <h1 className="card-title mb-10">Clients</h1>
       <FormContainer>
         {/* Open the modal using ID.showModal() method */}
         <button
-          className="btn btn-secondary mb-5 mt-5 float-right"
+          className="btn btn-primary mb-5 mt-5 float-right"
           onClick={() => window.my_modal_2.showModal()}
         >
           Add New Client
@@ -167,7 +168,7 @@ const ClientList = () => {
                 <td>
                   <Link
                     to={`/clients/${item._id}`}
-                    className="btn btn-sm btn-secondary w-fit"
+                    className="btn btn-xs btn-secondary w-fit"
                   >
                     View
                   </Link>

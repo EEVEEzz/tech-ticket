@@ -48,7 +48,8 @@ const UserEdit = () => {
 
   return (
     <div>
-      <Meta title={`Admin: Edit Users | Southern Indica`} />
+      
+      <Meta title={`Admin: Edit Users | `} />
       <Link className="btn btn-sm btn-primary" to={`/admin/users-list`}>
         Back
       </Link>

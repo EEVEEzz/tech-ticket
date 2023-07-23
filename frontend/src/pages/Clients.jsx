@@ -56,6 +56,8 @@ const Clients = () => {
 
   return (
     <div>
+      <h1 className="card-title mb-10">Clients</h1>
+
       <FormContainer>
         {/* Open the modal using ID.showModal() method */}
         <button
@@ -157,7 +159,7 @@ const Clients = () => {
                 <td>
                   <Link
                     to={`/clients/${item._id}`}
-                    className="btn btn-sm btn-secondary w-fit"
+                    className="btn btn-xs btn-secondary w-fit"
                   >
                     View
                   </Link>

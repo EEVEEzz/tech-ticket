@@ -9,14 +9,9 @@ const Home = () => {
     <div>
       <h1 className="card-title mb-10">Tech Ticket Support Desk</h1>
       <div className="mb-10">
-        <div className="stat-title">logged in as</div>
+        <div className="stat-title text-xs">logged in as</div>
         <span className="text-primary font-bold">
           {userInfo.name}{" "}
-          {userInfo.isAdmin ? (
-            <div className="badge badge-lg">Admin</div>
-          ) : (
-            <div className="badge badge-lg">Tech</div>
-          )}
         </span>
       </div>
 
