@@ -60,6 +60,8 @@ const ClientList = () => {
     refetch();
   }, [data]);
 
+  console.log(data)
+
   return (
     <div>
       <FormContainer>
@@ -128,6 +130,7 @@ const ClientList = () => {
               <th>Email</th>
               <th>Tickets</th>
               <th>Open</th>
+              <th>Closed</th>
               <th></th>
               <th></th>
               <th></th>
@@ -152,6 +155,11 @@ const ClientList = () => {
                 <td>
                   <div className="badge badge-success badge-outline">
                     {item.ticketsIsOpen}
+                  </div>
+                </td>
+                <td>
+                  <div className="badge badge-warning badge-outline">
+                    {item.ticketsIsClosed}
                   </div>
                 </td>
                 

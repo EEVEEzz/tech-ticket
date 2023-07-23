@@ -156,9 +156,8 @@ const updateToCompleted = asyncHandler(async (req, res) => {
     client.ticketsIsOpen = client.ticketsIsOpen
       ? (client.ticketsIsOpen -= 1)
       : 1;
-    client.ticketsIsClosed = client.ticketsIsOpen
-      ? (client.ticketsIsOpen += 1)
-      : 1;
+    client.ticketsIsClosed = (client.ticketsIsClosed += 1) || 1
+     
 
     const updatedOrder = await ticket.save();
     await client.save();
