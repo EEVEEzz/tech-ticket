@@ -12,6 +12,8 @@ you can login with:
 Fullstack MongoDB, Express, React & Node Technical Ticket Support Desk App
 with Full CRUD (Create, Read, Update, Delete) Functionality
 
+>***psst, i'm not a developer but I'm learning fullstack. This is my first Fullstack WebApp after numerous small projects. I'm completely self taught and only know I can continue improving***
+
 > This Project and the layout of the tickets are designed around someone that works with PC's as this is something I have personal experience with. However, the current fields may also apply to various other types of technical work but if not, can always be updated to do so.
 
 > With Multiple logins, for users and admins, there can be a clear communication between the tech at the back, the sales at the front and bossman out at head office. Or a handy tool to a freelance technician.
