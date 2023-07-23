@@ -55,7 +55,7 @@ const createTicket = asyncHandler(async (req, res) => {
 // GET /api/tickets
 // Private
 const getTickets = asyncHandler(async (req, res) => {
-  const tickets = await Ticket.find({});
+  const tickets = await Ticket.find({}).sort({createdAt: -1});
   res.status(200).json(tickets);
 });
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Message from "../../components/Message";
 import Spinner from "../../components/Spinner";
 import { FaTimes, FaTrash, FaCheck } from "react-icons/fa";
@@ -6,7 +6,7 @@ import { useGetTicketsQuery } from "../../slices/ticketSlice";
 import { Link } from "react-router-dom";
 
 const TicketList = () => {
-  const { data: tickets, isLoading, error } = useGetTicketsQuery();
+  const { data: tickets, isLoading, error,refetch } = useGetTicketsQuery();
 
   console.log(tickets);
 
@@ -18,6 +18,10 @@ const TicketList = () => {
       return str.substr(0, maxLength) + "...";
     }
   }
+
+  useEffect(() => {
+    refetch();
+  }, [tickets]);
 
   return isLoading ? (
     <Spinner />
@@ -46,7 +50,7 @@ const TicketList = () => {
         </thead>
         <tbody>
           {tickets.map((item, i) => (
-            <tr className="">
+            <tr key={item._id} className="">
               <th>{i + 1}</th>
               <td>{item.itemName}</td>
               <td>{shortenString(item.fault, 24)}</td>

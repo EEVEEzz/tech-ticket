@@ -7,13 +7,13 @@ import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [theme, setTheme] = useState("dracula");
+  const [theme, setTheme] = useState("business");
 
   useEffect(() => {
     if (localStorage.getItem("theme")) {
       setTheme(localStorage.getItem("theme"));
     } else {
-      localStorage.setItem("theme", "dracula");
+      localStorage.setItem("theme", "business");
     }
   }, [setTheme]);
 

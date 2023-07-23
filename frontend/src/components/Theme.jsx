@@ -7,9 +7,9 @@ const Theme = () => {
 
   const toggleTheme = () => {
     if (theme === "business") {
-      setTheme("fantasy");
-      $("#submain").attr("data-theme", "fantasy");
-      localStorage.setItem("theme", "fantasy");
+      setTheme("night");
+      $("#submain").attr("data-theme", "night");
+      localStorage.setItem("theme", "night");
     } else {
       setTheme("business");
       $("#submain").attr("data-theme", "business");
@@ -20,19 +20,19 @@ const Theme = () => {
   useEffect(() => {
     const localTheme = localStorage.getItem("theme")
       ? setTheme(localStorage.getItem("theme"))
-      : localStorage.setItem("theme", "fantasy");
+      : localStorage.setItem("theme", "night");
   }, [setTheme]);
 
   return (
     <div className="">
       <div className="">
-        <button className="" onClick={toggleTheme}>
+        <div className="" onClick={toggleTheme}>
           {theme === "business" ? (
             <FaMoon className="w-5 h-5" />
           ) : (
             <FaRegSun className="w-5 h-5" />
           )}
-        </button>
+        </div>
       </div>
 
       <div></div>

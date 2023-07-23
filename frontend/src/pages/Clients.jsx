@@ -79,7 +79,7 @@ const Clients = () => {
                 type="text"
               />
             </div>
-            <div  className="w-fit mx-auto">
+            <div className="w-fit mx-auto">
               <input
                 className="input input-primary mb-5"
                 id="clientEmail"
@@ -89,7 +89,7 @@ const Clients = () => {
                 type="text"
               />
             </div>
-            <div  className="w-fit mx-auto">
+            <div className="w-fit mx-auto">
               <input
                 className="input input-primary mb-5"
                 id="clientNumber"
@@ -99,7 +99,7 @@ const Clients = () => {
                 type="text"
               />
             </div>
-            <div  className="w-fit mx-auto">
+            <div className="w-fit mx-auto">
               <button className="btn btn-primary">Create</button>
             </div>
           </form>
@@ -121,14 +121,14 @@ const Clients = () => {
               <th>Name</th>
               <th>Contact</th>
               <th>Email</th>
-              <th>Tickets</th>
-              <th>Open</th>
-              <th>Closed</th>
+              <th>Total Tickets</th>
+              <th>Open Tickets</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {data.map((item, index) => (
-              <tr key={item.id}>
+              <tr key={item._id}>
                 <td>{index + 1}</td>
                 <td>{item.clientName}</td>
                 <td>{item.clientNumber}</td>
@@ -147,13 +147,6 @@ const Clients = () => {
                     {item.ticketsIsOpen}
                   </div>
                 </td>
-                <td>
-                  {" "}
-                  <div className="badge badge-accent badge-outline">
-                    {item.ticketsIsClosed}
-                  </div>
-                </td>
-                <td></td>
                 <td>
                   <Link
                     to={`/clients/${item._id}`}

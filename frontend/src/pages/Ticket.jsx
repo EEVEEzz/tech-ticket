@@ -252,7 +252,7 @@ const Ticket = () => {
                           </thead>
                           <tbody>
                             {data.replacements.map((item) => (
-                              <tr>
+                              <tr  key={item._id}>
                                 <td>{item.replacementName}</td>
                                 <td>{item.replacementModel}</td>
                                 <td>{item.replacementSerial}</td>
@@ -457,7 +457,7 @@ const Ticket = () => {
                   <div className="mt-5">
                     {data.notes.length > 0 &&
                       data.notes.map((item) => (
-                        <>
+                        <div  key={item._id}>
                           {userInfo.isAdmin && item.user === userInfo._id ? (
                             <>
                               <div className="textarea bg-base-200 mb-2">
@@ -503,7 +503,7 @@ const Ticket = () => {
                               </div>
                             </>
                           )}
-                        </>
+                        </div>
                       ))}
                   </div>
                 </div>

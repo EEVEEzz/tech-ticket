@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
   useDeleteClientMutation,
   useCreateClientMutation,
@@ -20,7 +20,7 @@ const ClientList = () => {
   const [clientEmail, setClientEmail] = useState("");
 
   const [createClient, { isLoading: createLoading, error: createError }] =
-  useCreateClientMutation();
+    useCreateClientMutation();
 
   const [deleteClient, { isLoading: deleteLoading }] =
     useDeleteClientMutation();
@@ -55,6 +55,10 @@ const ClientList = () => {
       }
     }
   };
+
+  useEffect(() => {
+    refetch();
+  }, [data]);
 
   return (
     <div>
@@ -124,7 +128,6 @@ const ClientList = () => {
               <th>Email</th>
               <th>Tickets</th>
               <th>Open</th>
-              <th>Closed</th>
               <th></th>
               <th></th>
               <th></th>
@@ -132,7 +135,7 @@ const ClientList = () => {
           </thead>
           <tbody>
             {data.map((item, index) => (
-              <tr key={item.id}>
+              <tr key={item._id}>
                 <td>{index + 1}</td>
                 <td>{item.clientName}</td>
                 <td>{item.clientNumber}</td>
@@ -151,12 +154,7 @@ const ClientList = () => {
                     {item.ticketsIsOpen}
                   </div>
                 </td>
-                <td>
-                  {" "}
-                  <div className="badge badge-accent badge-outline">
-                    {item.ticketsIsClosed}
-                  </div>
-                </td>
+                
                 <td></td>
                 <td>
                   <Link

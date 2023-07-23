@@ -31,7 +31,7 @@ const createClient = asyncHandler(async (req, res) => {
 // Private
 const getClients = asyncHandler(async (req, res) => {
   console.log("get clients");
-  const clients = await Client.find({});
+  const clients = await Client.find({}).sort({createdAt: -1});;
   res.status(200).json(clients);
 });
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Message from "../../components/Message";
 import Spinner from "../../components/Spinner";
 import {
@@ -16,7 +16,6 @@ import { toast } from "react-toastify";
 import Meta from "../../components/Meta";
 import FormContainer from "../../components/FormContainer";
 
-
 const UserList = () => {
   const { data: users, isLoading, error, refetch } = useGetUsersQuery();
   const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
@@ -30,7 +29,7 @@ const UserList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [register, { isLoading:registerLoading }] = useRegisterMutation();
+  const [register, { isLoading: registerLoading }] = useRegisterMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -43,8 +42,8 @@ const UserList = () => {
     if (!userInfo.isAdmin) {
       navigate(redirect);
     }
+    refetch();
   }, [userInfo, redirect, navigate]);
-
 
   const deleteHandler = async (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
@@ -225,7 +224,7 @@ const UserList = () => {
             ) : (
               <>
                 {users.map((item) => (
-                  <tr>
+                  <tr key={item._id}>
                     <th>1</th>
                     <td>
                       {item.isAdmin ? (

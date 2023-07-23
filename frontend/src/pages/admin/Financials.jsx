@@ -87,7 +87,7 @@ const Financials = () => {
         </thead>
         <tbody>
           {currentDayTicketsWithTotalReplacementPrice.map((item) => (
-            <tr>
+            <tr key={item._id}>
               <td>{item.itemName}</td>
               <td>{new Date(item.createdAt).toLocaleDateString()}</td>
               <td>{item.paymentMethod}</td>
@@ -201,7 +201,7 @@ const Financials = () => {
           </thead>
           <tbody>
             {pastDaysTicketsWithTotalReplacementPrice.map((item) => (
-              <tr>
+              <tr  key={item._id}>
                 <td>{item.itemName}</td>
                 <td>{new Date(item.createdAt).toLocaleDateString()}</td>
                 <td>{item.paymentMethod}</td>
