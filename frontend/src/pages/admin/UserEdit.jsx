@@ -9,6 +9,7 @@ import Message from "../../components/Message";
 import FormContainer from "../../components/FormContainer";
 import { toast } from "react-toastify";
 import Meta from "../../components/Meta";
+import { useSelector } from "react-redux";
 
 const UserEdit = () => {
   const { id: userId } = useParams();
@@ -48,8 +49,7 @@ const UserEdit = () => {
 
   return (
     <div>
-      
-      <Meta title={`Admin: Edit Users | `} />
+      <Meta title={`Admin: Edit ${user?.name}`} />
       <Link className="btn btn-sm btn-primary" to={`/admin/users-list`}>
         Back
       </Link>

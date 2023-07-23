@@ -9,6 +9,7 @@ import FormContainer from "../components/FormContainer";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
 import { useGetTicketsQuery } from "../slices/ticketSlice";
+import Meta from "../components/Meta";
 
 const Clients = () => {
   const [createClient, { isLoading: createLoading, error: createError }] =
@@ -53,15 +54,15 @@ const Clients = () => {
     }
   };
 
-
   return (
     <div>
-      <h1 className="card-title mb-10">Clients</h1>
+      <Meta title={`Clients`} />
+      <h1 className="card-title justify-center mb-10">Clients</h1>
 
       <FormContainer>
         {/* Open the modal using ID.showModal() method */}
         <button
-          className="btn btn-secondary mb-5 mt-5"
+          className="btn btn-secondary mb-5 mt-5 ml-5"
           onClick={() => window.my_modal_2.showModal()}
         >
           Add New Client
@@ -117,57 +118,59 @@ const Clients = () => {
       ) : error ? (
         <Message error={error?.data.error || error?.message} />
       ) : (
-        <table className="table bg-base-200 table-xs lg:table-xs  md:table-xs">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Contact</th>
-              <th>Email</th>
-              <th>Total Tickets</th>
-              <th>Open</th>
-              <th>Closed</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr key={item._id}>
-                <td>{index + 1}</td>
-                <td>{item.clientName}</td>
-                <td>{item.clientNumber}</td>
-                <td>{item.clientEmail}</td>
-                <td>
-                  <div className="badge">
-                    {item.tickets.length === 1 ? (
-                      <> {item.tickets.length} Ticket</>
-                    ) : (
-                      <>{item.tickets.length} Tickets</>
-                    )}
-                  </div>
-                </td>
-                <td>
-                  <div className="badge badge-success badge-outline">
-                    {item.ticketsIsOpen}
-                  </div>
-                </td>
-                <td>
-                  <div className="badge badge-warning badge-outline">
-                    {item.ticketsIsClosed}
-                  </div>
-                </td>
-                <td>
-                  <Link
-                    to={`/clients/${item._id}`}
-                    className="btn btn-xs btn-secondary w-fit"
-                  >
-                    View
-                  </Link>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="table bg-base-200 table-xs lg:table-xs  md:table-xs">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Tickets</th>
+                <th>Open</th>
+                <th>Closed</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={item._id}>
+                  <td>{index + 1}</td>
+                  <td>{item.clientName}</td>
+                  <td>{item.clientNumber}</td>
+                  <td>{item.clientEmail}</td>
+                  <td>
+                    <div className="badge">
+                      {item.tickets.length === 1 ? (
+                        <> {item.tickets.length} </>
+                      ) : (
+                        <>{item.tickets.length} </>
+                      )}
+                    </div>
+                  </td>
+                  <td>
+                    <div className="badge badge-success badge-outline">
+                      {item.ticketsIsOpen}
+                    </div>
+                  </td>
+                  <td>
+                    <div className="badge badge-warning badge-outline">
+                      {item.ticketsIsClosed}
+                    </div>
+                  </td>
+                  <td>
+                    <Link
+                      to={`/clients/${item._id}`}
+                      className="btn btn-xs btn-secondary w-fit"
+                    >
+                      View
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

@@ -12,6 +12,7 @@ import { Link, useParams } from "react-router-dom";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import FormContainer from "../../components/FormContainer";
+import Meta from "../../components/Meta";
 
 const ClientList = () => {
   const { data, isLoading, error, refetch } = useGetClientsQuery();
@@ -60,15 +61,16 @@ const ClientList = () => {
     refetch();
   }, [data]);
 
-  console.log(data)
+  console.log(data);
 
   return (
     <div>
-      <h1 className="card-title mb-10">Clients</h1>
+      <Meta title={`Admin: Client List`} />
+      <h1 className="card-title justify-center mb-10">Clients</h1>
       <FormContainer>
         {/* Open the modal using ID.showModal() method */}
         <button
-          className="btn btn-primary mb-5 mt-5 float-right"
+          className="btn btn-primary mb-5 mt-5 ml-5"
           onClick={() => window.my_modal_2.showModal()}
         >
           Add New Client
@@ -122,71 +124,73 @@ const ClientList = () => {
       ) : error ? (
         <Message error={error?.data.error || error?.message} />
       ) : (
-        <table className="table bg-base-200 table-xs lg:table-xs  md:table-xs">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Contact</th>
-              <th>Email</th>
-              <th>Tickets</th>
-              <th>Open</th>
-              <th>Closed</th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr key={item._id}>
-                <td>{index + 1}</td>
-                <td>{item.clientName}</td>
-                <td>{item.clientNumber}</td>
-                <td>{item.clientEmail}</td>
-                <td>
-                  <div className="badge">
-                    {item.tickets.length === 1 ? (
-                      <> {item.tickets.length} Ticket</>
-                    ) : (
-                      <>{item.tickets.length} Tickets</>
-                    )}
-                  </div>
-                </td>
-                <td>
-                  <div className="badge badge-success badge-outline">
-                    {item.ticketsIsOpen}
-                  </div>
-                </td>
-                <td>
-                  <div className="badge badge-warning badge-outline">
-                    {item.ticketsIsClosed}
-                  </div>
-                </td>
-                
-                <td></td>
-                <td>
-                  <Link
-                    to={`/clients/${item._id}`}
-                    className="btn btn-xs btn-secondary w-fit"
-                  >
-                    View
-                  </Link>
-                </td>
-                <td>
-                  <Link to={`/admin/client/${item._id}/edit`}>
-                    <FaEdit className="text-success" />
-                  </Link>
-                </td>
-                <td>
-                  <button onClick={() => deleteHandler(item._id)}>
-                    <FaTrash className="text-error" />
-                  </button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="table bg-base-200 table-xs lg:table-xs  md:table-xs">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Tickets</th>
+                <th>Open</th>
+                <th>Closed</th>
+                <th></th>
+                <th></th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={item._id}>
+                  <td>{index + 1}</td>
+                  <td>{item.clientName}</td>
+                  <td>{item.clientNumber}</td>
+                  <td>{item.clientEmail}</td>
+                  <td>
+                    <div className="badge">
+                      {item.tickets.length === 1 ? (
+                        <> {item.tickets.length} </>
+                      ) : (
+                        <>{item.tickets.length} </>
+                      )}
+                    </div>
+                  </td>
+                  <td>
+                    <div className="badge badge-success badge-outline">
+                      {item.ticketsIsOpen}
+                    </div>
+                  </td>
+                  <td>
+                    <div className="badge badge-warning badge-outline">
+                      {item.ticketsIsClosed}
+                    </div>
+                  </td>
+
+                  <td></td>
+                  <td>
+                    <Link
+                      to={`/clients/${item._id}`}
+                      className="btn btn-xs btn-secondary w-fit"
+                    >
+                      View
+                    </Link>
+                  </td>
+                  <td>
+                    <Link to={`/admin/client/${item._id}/edit`}>
+                      <FaEdit className="text-success" />
+                    </Link>
+                  </td>
+                  <td>
+                    <button onClick={() => deleteHandler(item._id)}>
+                      <FaTrash className="text-error" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

@@ -55,8 +55,8 @@ const Profile = () => {
   return (
     <>
       <div className="flex">
-        <Meta title={`Profile`} />
-        <h1 className="card-title mb-10">Profile</h1>
+        <Meta title={`Profile: ${userInfo?.name}`} />
+        <h1 className="card-title mx-auto justify-center mb-10">Profile</h1>
       </div>
       <div>
         <div className="grid grid-cols-1">

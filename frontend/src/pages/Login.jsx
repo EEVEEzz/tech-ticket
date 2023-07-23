@@ -8,6 +8,7 @@ import { useLoginMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
 import Spinner from '../components/Spinner'
+import Meta from "../components/Meta";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -48,6 +49,7 @@ const Login = () => {
 
   return (
     <div>
+      <Meta title={`Login`} />
       <FormContainer>
         <div className="hero opacity-80">
           <form onSubmit={submitHandler} className="form form-control mb-10">

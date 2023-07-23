@@ -10,6 +10,7 @@ import Spinner from "../components/Spinner";
 import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
 import TicketCard from "../components/tickets/TicketCard";
+import Meta from "../components/Meta";
 
 const Client = () => {
   const { id: clientId } = useParams();
@@ -76,27 +77,28 @@ const Client = () => {
     <Message error={error?.message || error?.data.message} />
   ) : (
     <div className="">
+      <Meta title={`Client: ${client?.clientName}`} />
       <div className="grid grid-cols-2 gap-5 mb-5">
         <div>
           <div className="stat-title">Client Name:</div>
-          <h2 className="text-4xl font-bold"> {data.clientName}</h2>
+          <h2 className="stat-value text-2xl md:text-3xl lg:text-4xl font-bold"> {data.clientName}</h2>
         </div>
 
         <div>
           <div className="stat-title">Client Number:</div>
-          <h2 className="text-4xl font-bold">{data.clientNumber}</h2>
+          <h2 className="stat-value text-xl md:text-2xl lg:text-3xl font-bold">+27{data.clientNumber}</h2>
         </div>
 
         <div>
           <div className="stat-title">Client Email:</div>
-          <h2 className="text-4xl font-bold"> {data.clientEmail}</h2>
+          <h2 className="stat-value text-2xl md:text-3xl lg:text-4xl font-bold"> {data.clientEmail}</h2>
         </div>
       </div>
 
       <FormContainer>
         {/* Open the modal using ID.showModal() method */}
         <button
-          className="btn btn-secondary mb-5 mt-5"
+          className="btn btn-secondary mb-5 mt-5 ml-5"
           onClick={() => window.my_modal_2.showModal()}
         >
           Create a new Ticket
@@ -219,35 +221,37 @@ const Client = () => {
       </FormContainer>
 
       <div>
-        <table className="table bg-base-200 table-xs lg:table-xs  md:table-xs">
-          <thead>
-            <tr>
-              <th></th>
-              <th>ItemName</th>
-              <th>Fault</th>
-              <th>Created</th>
-              <th>Client</th>
-              <th>Contact</th>
-              <th>Status</th>
-              <th>Paid</th>
-              <th>Price</th>
-              <th>Completed</th>
-              <th>Collected</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {data?.tickets?.length > 0 && (
-              <>
-                {tickets
-                  .filter((ticket) => ticket.clientId === data._id)
-                  .map((item, i) => (
-                    <TicketCard i={i} key={item._id} ticket={item} />
-                  ))}
-              </>
-            )}
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <table className="table bg-base-200 table-xs lg:table-xs  md:table-xs">
+            <thead>
+              <tr>
+                <th></th>
+                <th>ItemName</th>
+                <th>Fault</th>
+                <th>Created</th>
+                <th>Client</th>
+                <th>Contact</th>
+                <th>Status</th>
+                <th>Paid</th>
+                <th>Price</th>
+                <th>Completed</th>
+                <th>Collected</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {data?.tickets?.length > 0 && (
+                <>
+                  {tickets
+                    .filter((ticket) => ticket.clientId === data._id)
+                    .map((item, i) => (
+                      <TicketCard i={i} key={item._id} ticket={item} />
+                    ))}
+                </>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React from 'react'
 
 const TicketEdit = () => {
   return (
-    <div>TicketEdit</div>
+    <div>Shouldn't really be editing Tickets</div>
   )
 }
 

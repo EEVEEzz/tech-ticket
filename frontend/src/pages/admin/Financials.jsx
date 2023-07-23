@@ -5,6 +5,7 @@ import Spinner from "../../components/Spinner";
 import Message from "../../components/Message";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Meta from "../../components/Meta";
 
 const Financials = () => {
   const {
@@ -65,126 +66,14 @@ const Financials = () => {
     <>Error</>
   ) : (
     <>
-    <h1 className="card-title mb-10">Financial Info</h1>
+      <Meta title={`Admin: Financial Info`} />
+      <h1 className="card-title justify-center mb-10">Financial Info</h1>
       {/* Current Day Tickets Table */}
       <h3 className="stat-title">
         Today's Tickets ({new Date().toLocaleDateString()})
       </h3>
-      <table className="table bg-base-200 table-xs lg:table-xs  md:table-xs">
-        <thead>
-          <tr>
-            <th>Item Name</th>
-            <th>Created</th>
-            <th>Pay Method</th>
-            <th>Labour</th>
-            <th>Replacements</th>
-            <th>Paid</th>
-            <th>Paid on</th>
-            <th>Status</th>
-            <th>Completed</th>
-            <th>Collected</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentDayTicketsWithTotalReplacementPrice.map((item) => (
-            <tr key={item._id}>
-              <td>{item.itemName}</td>
-              <td>{new Date(item.createdAt).toLocaleDateString()}</td>
-              <td>{item.paymentMethod}</td>
-              <td>
-                {Number(item.totalPrice) - Number(item.totalReplacementPrice)}
-              </td>
-              <td>{item.totalReplacementPrice}</td>
-              <td>
-                {item.isPaid ? (
-                  <div className="text-success">
-                    <FaCheck />
-                  </div>
-                ) : (
-                  <div className="text-error">
-                    <FaTimes />
-                  </div>
-                )}
-              </td>
-              <td>
-                {item.paidAt ? (
-                  <div className="text-success">
-                    {new Date(item.paidAt).toLocaleDateString()}
-                  </div>
-                ) : (
-                  <div className="text-error">
-                    <FaTimes />
-                  </div>
-                )}
-              </td>
-              <td>
-                {item.isOpen && item.inProgress ? (
-                  <>
-                    <div className="text-accent">in progress</div>
-                  </>
-                ) : !item.inProgress && item.isOpen ? (
-                  <>
-                    <div className="text-success">new/open</div>
-                  </>
-                ) : item.isClosed ? (
-                  <>
-                    <div className="text-warning">closed</div>
-                  </>
-                ) : (
-                  <>
-                    <div></div>
-                  </>
-                )}
-              </td>
-              <td>
-                {item.completedAt ? (
-                  <div className="text-success">
-                    {new Date(item.completedAt).toLocaleDateString()}
-                  </div>
-                ) : (
-                  <div className="text-error">
-                    <FaTimes />
-                  </div>
-                )}
-              </td>
-              <td>
-                {item.collectedAt ? (
-                  <div className="text-success">
-                    {new Date(item.collectedAt).toLocaleDateString()}
-                  </div>
-                ) : (
-                  <div className="text-error">
-                    <FaTimes />
-                  </div>
-                )}
-              </td>
-              <td>
-                <Link
-                  className="btn btn-xs btn-primary"
-                  to={`/tickets/${item._id}`}
-                >
-                  View ticket
-                </Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="float-right mt-5 mb-10">
-        <h3 className="stat-title">Total of the day</h3>
-        <div>
-          R
-          {currentDayTicketsWithTotalReplacementPrice?.reduce(
-            (acc, ticket) => acc + Number(ticket.totalPrice),
-            0
-          )}
-        </div>
-      </div>
-      {/* Past Days Tickets Table */}
-      <div className="float-left w-full">
-        <h3 className="stat-title">Past Tickets</h3>
-        <table className="table bg-base-200 table-xs lg:table-xs  md:table-xs ">
+      <div className="overflow-x-auto">
+        <table className="table bg-base-200 table-xs lg:table-xs  md:table-xs">
           <thead>
             <tr>
               <th>Item Name</th>
@@ -201,8 +90,8 @@ const Financials = () => {
             </tr>
           </thead>
           <tbody>
-            {pastDaysTicketsWithTotalReplacementPrice.map((item) => (
-              <tr  key={item._id}>
+            {currentDayTicketsWithTotalReplacementPrice.map((item) => (
+              <tr key={item._id}>
                 <td>{item.itemName}</td>
                 <td>{new Date(item.createdAt).toLocaleDateString()}</td>
                 <td>{item.paymentMethod}</td>
@@ -285,6 +174,125 @@ const Financials = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      <div className="float-right mt-5 mb-10">
+        <h3 className="stat-title">Total of the day</h3>
+        <div>
+          R
+          {currentDayTicketsWithTotalReplacementPrice?.reduce(
+            (acc, ticket) => acc + Number(ticket.totalPrice),
+            0
+          )}
+        </div>
+      </div>
+      {/* Past Days Tickets Table */}
+      <div className="float-left w-full">
+        <h3 className="stat-title">Past Tickets</h3>
+
+        <div className="overflow-x-auto">
+          <table className="table bg-base-200 table-xs lg:table-xs  md:table-xs ">
+            <thead>
+              <tr>
+                <th>Item Name</th>
+                <th>Created</th>
+                <th>Pay Method</th>
+                <th>Labour</th>
+                <th>Replacements</th>
+                <th>Paid</th>
+                <th>Paid on</th>
+                <th>Status</th>
+                <th>Completed</th>
+                <th>Collected</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {pastDaysTicketsWithTotalReplacementPrice.map((item) => (
+                <tr key={item._id}>
+                  <td>{item.itemName}</td>
+                  <td>{new Date(item.createdAt).toLocaleDateString()}</td>
+                  <td>{item.paymentMethod}</td>
+                  <td>
+                    {Number(item.totalPrice) -
+                      Number(item.totalReplacementPrice)}
+                  </td>
+                  <td>{item.totalReplacementPrice}</td>
+                  <td>
+                    {item.isPaid ? (
+                      <div className="text-success">
+                        <FaCheck />
+                      </div>
+                    ) : (
+                      <div className="text-error">
+                        <FaTimes />
+                      </div>
+                    )}
+                  </td>
+                  <td>
+                    {item.paidAt ? (
+                      <div className="text-success">
+                        {new Date(item.paidAt).toLocaleDateString()}
+                      </div>
+                    ) : (
+                      <div className="text-error">
+                        <FaTimes />
+                      </div>
+                    )}
+                  </td>
+                  <td>
+                    {item.isOpen && item.inProgress ? (
+                      <>
+                        <div className="text-accent">in progress</div>
+                      </>
+                    ) : !item.inProgress && item.isOpen ? (
+                      <>
+                        <div className="text-success">new/open</div>
+                      </>
+                    ) : item.isClosed ? (
+                      <>
+                        <div className="text-warning">closed</div>
+                      </>
+                    ) : (
+                      <>
+                        <div></div>
+                      </>
+                    )}
+                  </td>
+                  <td>
+                    {item.completedAt ? (
+                      <div className="text-success">
+                        {new Date(item.completedAt).toLocaleDateString()}
+                      </div>
+                    ) : (
+                      <div className="text-error">
+                        <FaTimes />
+                      </div>
+                    )}
+                  </td>
+                  <td>
+                    {item.collectedAt ? (
+                      <div className="text-success">
+                        {new Date(item.collectedAt).toLocaleDateString()}
+                      </div>
+                    ) : (
+                      <div className="text-error">
+                        <FaTimes />
+                      </div>
+                    )}
+                  </td>
+                  <td>
+                    <Link
+                      className="btn btn-xs btn-primary"
+                      to={`/tickets/${item._id}`}
+                    >
+                      View ticket
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
       <div className="float-right mt-5 mb-10">
         <h3 className="stat-title">Total of all tickets</h3>

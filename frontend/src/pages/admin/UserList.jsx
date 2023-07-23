@@ -79,7 +79,7 @@ const UserList = () => {
   return (
     <div>
       <div>
-      <h1 className="card-title mb-10">Users</h1>
+      <h1 className="card-title justify-center mb-10">Users</h1>
       </div>
 
       <Meta title={`Admin: Users List`} />
@@ -88,7 +88,7 @@ const UserList = () => {
           <FormContainer>
             {/* Open the modal using ID.showModal() method */}
             <button
-              className="btn btn-primary btn mb-5 mt-5 float-right"
+              className="btn btn-primary btn mb-5 mt-5 ml-5"
               onClick={() => window.my_modal_1.showModal()}
             >
               Add a new User
@@ -204,6 +204,7 @@ const UserList = () => {
           </FormContainer>
         </div>
 
+        <div className="overflow-x-auto">
         <table className="table bg-base-200 table-xs lg:table-xs  md:table-xs">
           <thead>
             <tr>
@@ -270,6 +271,7 @@ const UserList = () => {
             )}
           </tbody>
         </table>
+      </div>
       </div>
     </div>
   );

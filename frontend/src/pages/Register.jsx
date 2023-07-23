@@ -7,6 +7,7 @@ import { useRegisterMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
+import Meta from "../components/Meta";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -62,6 +63,8 @@ const Register = () => {
         <Message error={error?.data.error || error?.message} />
       ) : (
         <FormContainer>
+        <Meta title={`Admin: Register a User`} />
+
           <div className="container hero  opacity-80">
             {/* <img className='rounded-xl h-full w-full' src={`https://www.mitchamcouncil.sa.gov.au/__data/assets/image/0017/1192130/Kntting-and-Crochet.jpg`} /> */}
 

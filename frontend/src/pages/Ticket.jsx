@@ -13,6 +13,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import FormContainer from "../components/FormContainer";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import Meta from "../components/Meta";
 
 const Ticket = () => {
   const { id: ticketId } = useParams();
@@ -138,10 +139,12 @@ const Ticket = () => {
         <Message error={error?.message || error?.data.message} />
       ) : (
         <>
-          <div>
+        <Meta title={`Ticket: ${data._id}`} />
+
+          <div className="">
             <div className="mb-3 mt-3">
-              <div className="">
-                <div className="flex gap-5 mb-3">
+              <div className="ml-5 mr-5">
+                <div className="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-5 gap-5 mb-3">
                   {data.isOpen && data.inProgress ? (
                     <>
                       <div className="badge badge-accent badge-outline">
@@ -214,7 +217,7 @@ const Ticket = () => {
                 </div>
 
                 <div className="mt-2">
-                  <div className="flex justify-between gap-3 ">
+                  <div className="flex flex-col lg:flex-row justify-between gap-3 ">
                     <div className="grid grid-cols-2 gap-10">
                       <div>
                         <div className="stat-title">Item Name</div>

@@ -48,7 +48,7 @@ const ClientEdit = () => {
 
   return (
     <div>
-      <Meta title={`Admin: Edit Users | `} />
+      <Meta title={`Admin: Edit ${client?.clientName}`} />
       <Link className="btn btn-sm btn-primary" to={`/admin/users-list`}>
         Back
       </Link>
