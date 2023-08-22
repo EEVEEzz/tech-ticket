@@ -12,7 +12,7 @@ you can login with:
 Fullstack MongoDB, Express, React & Node Technical Ticket Support Desk App
 with Full CRUD (Create, Read, Update, Delete) Functionality
 
-> **_psst, i'm not a developer but I'm learning fullstack. This is my first Fullstack WebApp after numerous small projects. I'm completely self taught and only know I can continue improving_**
+> **_psst, i'm not a developer but I'm learning fullstack. This is my first Fullstack WebApp after numerous small projects. I'm completely self taught and continuously learning_**
 
 > This Project and the layout of the tickets are designed around someone that works with PC's as this is something I have personal experience with. However, the current fields may also apply to various other types of technical work but if not, can always be updated to do so.
 
@@ -116,10 +116,10 @@ with Full CRUD (Create, Read, Update, Delete) Functionality
 add the following lines:
 
 ```env
-// .env
+# .env
 
 MONGO_URI='your mongo database uri'
-NODE_ENV='production'    // or 'development' if not using the production build
+NODE_ENV='production'    # or 'development' if not using the production build
 PORT=5000
 JWT_SECRET='anything'
 ```
