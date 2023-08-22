@@ -116,10 +116,10 @@ with Full CRUD (Create, Read, Update, Delete) Functionality
 add the following lines:
 
 ```env
-// .env
+# .env
 
 MONGO_URI='your mongo database uri'
-NODE_ENV='production'    // or 'development' if not using the production build
+NODE_ENV='production'    # or 'development' if not using the production build
 PORT=5000
 JWT_SECRET='anything'
 ```
