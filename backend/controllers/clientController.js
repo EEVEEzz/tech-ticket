@@ -5,11 +5,7 @@ import Client from "../models/clientModel.js";
 // POST /api/clients
 // Private
 const createClient = asyncHandler(async (req, res) => {
-  console.log(req.body);
-
   const { clientName, clientNumber, clientEmail } = req.body;
-
-  console.log(req.user);
 
   if (!clientName && !clientNumber) {
     res.status(400);

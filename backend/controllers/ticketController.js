@@ -176,8 +176,6 @@ const addReplacementToTicket = asyncHandler(async (req, res) => {
   const ticket = await Ticket.findById(req.params.id);
   const client = await Client.findById(ticket.clientId);
 
-  console.log(req.body)
-
   // get ticket from body
   const {
     ticketId,

@@ -9,8 +9,6 @@ import Meta from "../../components/Meta";
 const TicketList = () => {
   const { data: tickets, isLoading, error, refetch } = useGetTicketsQuery();
 
-  console.log(tickets);
-
   function shortenString(str, maxLength) {
     if (str.length <= maxLength) {
       return str;

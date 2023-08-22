@@ -8,8 +8,6 @@ import Meta from "../components/Meta";
 const Tickets = () => {
   const { data, isLoading, error, refetch } = useGetTicketsQuery();
 
-  console.log(data);
-
   useEffect(() => {
     refetch();
   }, []);

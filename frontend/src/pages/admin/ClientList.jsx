@@ -61,8 +61,6 @@ const ClientList = () => {
     refetch();
   }, [data]);
 
-  console.log(data);
-
   return (
     <div>
       <Meta title={`Admin: Client List`} />

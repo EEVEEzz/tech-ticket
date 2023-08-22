@@ -88,7 +88,7 @@ const UserList = () => {
           <FormContainer>
             {/* Open the modal using ID.showModal() method */}
             <button
-              className="btn btn-primary btn mb-5 mt-5 ml-5"
+              className="btn btn-primary mb-5 mt-5 ml-5"
               onClick={() => window.my_modal_1.showModal()}
             >
               Add a new User

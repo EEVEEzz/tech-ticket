@@ -124,7 +124,6 @@ const Ticket = () => {
     }
   };
 
-  console.log(data);
 
   return (
     <div>
@@ -165,7 +164,7 @@ const Ticket = () => {
                     </>
                   ) : (
                     <>
-                      <div className="badge badge badge-outline"></div>
+                      <div className="badge badge-outline"></div>
                     </>
                   )}
                   {data.paymentMethod !== "No Payment" ? (

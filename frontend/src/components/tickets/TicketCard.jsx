@@ -4,8 +4,6 @@ import Message from "../Message";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
 const TicketCard = ({ ticket, i }) => {
-  console.log(ticket);
-
   function shortenString(str, maxLength) {
     if (str.length <= maxLength) {
       return str;

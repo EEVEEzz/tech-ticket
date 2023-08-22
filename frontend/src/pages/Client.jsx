@@ -56,7 +56,6 @@ const Client = () => {
           model,
           fault,
         }).unwrap();
-        console.log(res);
         navigate(`/tickets/${res._id}`);
         refetch();
         toast.success("Ticket Created");
